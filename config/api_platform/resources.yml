@@ -1,0 +1,4 @@
+App\Entity\Company:
+  operations:
+    ApiPlatform\Metadata\GetCollection:
+      controller: App\Controller\ControllerGetCompany
