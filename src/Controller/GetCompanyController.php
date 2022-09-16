@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 #[AsController]
-class ControllerGetCompany extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
+class GetCompanyController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 {
     private $companyRepository;
     private $tokenStorage;
@@ -20,13 +20,6 @@ class ControllerGetCompany extends \Symfony\Bundle\FrameworkBundle\Controller\Ab
     {
         $this->companyRepository = $companyRepository;
         $this->tokenStorage = $tokenStorage;
-    }
-
-    public function getCompany(Company $company): Company
-    {
-        $this->companyRepository->handle($company);
-
-        return $company;
     }
 
     public function getUser(): ?User
@@ -52,7 +45,7 @@ class ControllerGetCompany extends \Symfony\Bundle\FrameworkBundle\Controller\Ab
 
         switch ($email){
             case "gio@mail.fr":
-                $company = $this->companyRepository->find(1);
+                $company = $this->getUser()->getCompany();
                 return new JsonResponse([
                     'name' => $company->getName(),
                     'activity_area' => $company->getActivityArea(),
@@ -62,15 +55,13 @@ class ControllerGetCompany extends \Symfony\Bundle\FrameworkBundle\Controller\Ab
                     'country' => $company->getCountry(),
                 ]);
             case "john@mail.fr":
-                echo "c'est john";
-                $company = $this->companyRepository->find(2);
+                $company = $this->getUser()->getCompany();
                 return new JsonResponse([
                     'name' => $company->getName(),
                     'activity_area' => $company->getActivityArea()
                 ]);
             default:
-                echo "Vous n'avez pas accès";
-                return [];
+                return new JsonResponse(["Vous n'avez pas accès"]);
                 break;
 
 
