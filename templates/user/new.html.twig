@@ -9,3 +9,18 @@
 
     <a href="{{ path('app_user_index') }}">back to list</a>
 {% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        console.log("okkkk");
+
+        document.getElementById("user_Roles").addEventListener("change", myFunction);
+
+        function myFunction() {
+            console.log(document.getElementById("user_Roles"));
+
+        }
+
+    </script>
+{% endblock %}
