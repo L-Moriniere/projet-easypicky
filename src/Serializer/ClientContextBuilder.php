@@ -44,7 +44,6 @@ final class ClientContextBuilder implements SerializerContextBuilderInterface
         $context = $this->decorated->createFromRequest($request, $normalization, $extractedAttributes);
 
         $email = $this->getUser()->getEmail();
-    dd($email);
          if ($email == "gio@mail.fr") {
                 if ($normalization)
                     $context['groups'][] = 'client1:read';

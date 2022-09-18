@@ -61,7 +61,6 @@ class CompanyApiSerializer implements \Symfony\Component\Serializer\Normalizer\C
 
 
 
-
     private function userHasPermissions($object): bool
     {
         $token = $this->tokenStorage->getToken();
@@ -74,7 +73,6 @@ class CompanyApiSerializer implements \Symfony\Component\Serializer\Normalizer\C
 
     public function supportsDenormalization($data, string $type, string $format = null, array $context = [])
     {
-        // TODO: Implement supportsDenormalization() method.
         $alreadyCalled = $context[self::ALREADY_CALLED_DENORMALIZER] ?? false;
         return $data instanceof Company && $alreadyCalled == false;
     }
@@ -83,7 +81,6 @@ class CompanyApiSerializer implements \Symfony\Component\Serializer\Normalizer\C
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
 
-        dd($data, "ok");
         if ($this->userHasPermissions($data)) {
             $context['groups'][] = 'client1:write';
         }
