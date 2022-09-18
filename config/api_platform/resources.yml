@@ -1,6 +1,6 @@
 App\Entity\Company:
   operations:
     ApiPlatform\Metadata\GetCollection:
-      controller: App\Controller\GetCompanyController
+    ApiPlatform\Metadata\Get:
     ApiPlatform\Metadata\Patch:
       controller: App\Controller\PatchCompanyController

@@ -5,9 +5,11 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Controller\GetCompanyController;
 use App\Repository\CompanyRepository;
+use App\State\CompanyPatchProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -15,6 +17,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 #[ORM\Entity(repositoryClass: CompanyRepository::class)]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => ['write']],
+)]
 class Company
 {
     #[ORM\Id]
@@ -23,24 +29,30 @@ class Company
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['write', 'read'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 9)]
     private ?string $siren = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['client1:write', 'client1:read'])]
     private ?string $activityArea = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['client1:write', 'client1:read'])]
     private ?string $adress = null;
 
     #[ORM\Column(length: 5)]
+    #[Groups(['client1:write', 'client1:read'])]
     private ?string $cp = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['client1:write', 'client1:read'])]
     private ?string $city = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['client1:write', 'client1:read'])]
     private ?string $country = null;
 
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: User::class)]
