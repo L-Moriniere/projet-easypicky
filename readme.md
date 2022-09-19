@@ -1,7 +1,9 @@
 # Installation du projet
 
-1. Configurer le .env avec la bonne url de la base de données pour se connecter
-2. Importer la base de données avec le fichier présent à la racine du projet, cela créera la base de données ainsi que les tables avec puis importera les données (nom du fichier export_db_projet_easypicky.sql)
+1. Extraire le dossier
+2. Dans le dossier extrait, faire la commande ```composer install``` pour installer toutes les dépendances
+3. Configurer le .env avec la bonne url de la base de données pour se connecter
+4. Importer la base de données avec le fichier présent à la racine du projet, cela créera la base de données ainsi que les tables avec puis importera les données (nom du fichier export_db_projet_easypicky.sql)
 
 Il y a 3 utilisateurs : <br>
   a. Admin
@@ -16,7 +18,7 @@ Il y a 3 utilisateurs : <br>
     Mail: luigi@mail.fr
     Mdp: Past@!
 
-3. En tant **qu'administrateur**, lancer le projet avec le binaire et la commande ```symfony serve``` sinon avec la commande ```php -S 127.0.0.1:8000 -t public```
+5. En tant **qu'administrateur**, lancer le projet avec le binaire et la commande ```symfony serve``` sinon avec la commande ```php -S 127.0.0.1:8000 -t public```
 
 Se connecter sur ``` http://localhost:8000/ ```
 
@@ -73,9 +75,9 @@ curl --location --request PATCH 'http://127.0.0.1:8000/api/companies/1' \
 
 # Problème rencontré
 
-Le projet a un souci au niveau du javascript, il s'éxecute mais le document chargé est vide. Pour la création d'un utilisateur, c'est censé pouvoir bloquer le select de la compagnie en fonction du role choisi. La fonction est là mais ça ne s'éxecute pas (je ne sais pas pourquoi).
+* Le projet a un souci au niveau du javascript, il s'éxecute mais le document chargé est vide. Pour la création d'un utilisateur, c'est censé pouvoir bloquer le select de la compagnie en fonction du role choisi. La fonction est là mais ça ne s'éxecute pas (je ne sais pas pourquoi).
 
-Si erreur comme ça lancer le terminal en tant qu'administrateur pour lancer le serveur php
+* Si erreur comme ça lancer le terminal en tant qu'administrateur pour lancer le serveur php
 
 ```
 Warning: SessionHandler::read(): open(C:\Program Files (x86)\XAMPP\tmp\sess_jta5kd75a6tc0ecg9q6g74o2ai, O_RDWR) failed: Permission denied (13)
