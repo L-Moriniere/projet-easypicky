@@ -13,12 +13,13 @@
 {% block javascripts %}
 
     <script>
-        console.log("okkkk");
 
+        var company = document.getElementById('user_company').disabled = true;
         document.getElementById("user_Roles").addEventListener("change", myFunction);
 
         function myFunction() {
-            console.log(document.getElementById("user_Roles"));
+            var company = document.getElementById('user_company');
+            company.disabled = this.value === "ROLE_ADMIN";
 
         }
 
