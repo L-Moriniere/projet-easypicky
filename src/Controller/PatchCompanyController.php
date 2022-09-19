@@ -8,6 +8,7 @@ use App\Repository\CompanyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
@@ -27,18 +28,38 @@ class PatchCompanyController extends \Symfony\Bundle\FrameworkBundle\Controller\
     }
 
 
-    public function __invoke($data)
+    public function __invoke($data, $previous_data): JsonResponse
     {
-        if ($this->getUser()->getCompany()->getId() == $data->getId()) {
-            $this->entityManager->persist($data);
-            $this->entityManager->flush();
-            return new JsonResponse("Company " . $data->getName() . " modifiée avec succès") ;
+        $email = $this->getUser()->getEmail();
+
+        switch ($email) {
+            case "gio@mail.fr":
+                if ($this->getUser()->getCompany()->getId() == $data->getId()) {
+                    $data->setSiren($previous_data->getSiren());
+                    $this->entityManager->persist($data);
+                    $this->entityManager->flush();
+                    return new JsonResponse("Company " . $data->getName() . " modifiée avec succès");
+                } else
+                    return new JsonResponse("Vous n'avez pas les droits");
+
+            case "john@mail.fr":
+                if ($this->getUser()->getCompany()->getId() == $data->getId()) {
+                    $company = $this->getUser()->getCompany();
+                    $company->setName($data->getName());
+                    $company->setActivityArea($data->getActivityArea());
+                    $this->entityManager->persist($company);
+                    $this->entityManager->flush();
+                    return new JsonResponse("Company " . $data->getName() . " modifiée avec succès");
+                } else
+                    return new JsonResponse("Vous n'avez pas les droits");
+
+            default:
+                return new JsonResponse(["Vous n'avez pas accès"]);
         }
-        else return new JsonResponse("Vous n'avez pas les droits") ;
     }
 
-
-    public function getUser(): ?User
+    public
+    function getUser(): ?User
     {
         $token = $this->tokenStorage->getToken();
 

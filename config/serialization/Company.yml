@@ -1,0 +1,14 @@
+App\Entity\Company:
+  attributes:
+    name:
+      groups: ['read', 'write']
+    activityArea:
+      groups: ['read', 'write']
+    adress:
+      groups: ['client1:read', 'client1:write']
+    cp:
+      groups: ['client1:read', 'client1:write']
+    city:
+      groups: ['client1:read', 'client1:write']
+    country:
+      groups: ['client1:read', 'client1:write']
