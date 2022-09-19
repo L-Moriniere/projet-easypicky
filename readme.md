@@ -2,6 +2,7 @@
 
 1. Extraire le dossier
 2. Dans le dossier extrait, faire la commande ```composer install``` pour installer toutes les dépendances
+3. ``` php bin/console lexik:jwt:generate-keypair ``` pour générer les clés SSL nécessaire pour la création des JWT
 3. Configurer le .env avec la bonne url de la base de données pour se connecter
 4. Importer la base de données avec le fichier présent à la racine du projet, cela créera la base de données ainsi que les tables avec puis importera les données (nom du fichier export_db_projet_easypicky.sql)
 
