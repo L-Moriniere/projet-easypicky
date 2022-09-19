@@ -1,7 +1,7 @@
 # Installation du projet
 
 1. Configurer le .env avec la bonne url de la base de données pour se connecter
-2. Importer la base de données avec le fichier présent à la racine du projet, cela créera la base de données ainsi que les tables avec puis importera les données
+2. Importer la base de données avec le fichier présent à la racine du projet, cela créera la base de données ainsi que les tables avec puis importera les données (nom du fichier export_db_projet_easypicky.sql)
 
 Il y a 3 utilisateurs : <br>
   a. Admin
@@ -39,7 +39,7 @@ Cela va générer le token que l'on utilisera pour pouvoir s'identifier lors des
 ## GET 
 Cela permet de récupérer les informations de leur compagnie
 
-### Récupérer les collections de compagnies (il n'est possible de voir que leur compagnie)
+### Récupérer les collections de compagnies (il n'est possible de voir que la compagnie de l'utilisateur)
 ```
 curl --location --request GET 'http://127.0.0.1:8000/api/companies' \
 --header 'Authorization: Bearer token'
