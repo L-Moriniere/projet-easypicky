@@ -75,3 +75,8 @@ curl --location --request PATCH 'http://127.0.0.1:8000/api/companies/1' \
 
 Le projet a un souci au niveau du javascript, il s'éxecute mais le document chargé est vide. Pour la création d'un utilisateur, c'est censé pouvoir bloquer le select de la compagnie en fonction du role choisi. La fonction est là mais ça ne s'éxecute pas (je ne sais pas pourquoi).
 
+Si erreur comme ça lancer le terminal en tant qu'administrateur pour lancer le serveur php
+
+```
+Warning: SessionHandler::read(): open(C:\Program Files (x86)\XAMPP\tmp\sess_jta5kd75a6tc0ecg9q6g74o2ai, O_RDWR) failed: Permission denied (13)
+```
