@@ -1,3 +1,30 @@
+# OBJECTIFS
+Entité
+1. Créer une entité User afin de créer des utilisateurs (firstName, lastName, Email, Password,
+etc).
+2. Créer une entité Company (name, siren, activityArea, Address, cp, city, country, etc).
+# Fonctionnement
+1. Créer trois utilisateurs, 1 Admin et 2 clients. Chaque client sera lié à une compagnie
+différente (Etc : Danone, Mondelez).
+2. Créer un crud permettant d’ajouter, éditer, supprimer un utilisateur. A la création d’un
+utilisateur, permettre de lui associer un rôle (admin, etc) et si l’utilisateur est un client
+l’associer à une compagnie.
+3. Créer un crud permettant d’ajouter, éditer, supprimer une compagnie.
+4. Permettre aux clients de faire des appels API afin de récupérer des infos sur la
+compagnie qui est associée à eux :
+- Le client 1 devra récupérer toutes les données à l’exception de l’id et du siren.
+- Le client 2 ne récupérera que le nom et l’activityArea.
+5. Permettre aux clients d’éditer les données de leur compagnie par appel API.
+## Attention
+1. Pas besoin de faire une jolie interface pour les crud, un twig basic est largement suffisant.
+2. Pour la création de l’APi vous êtes libre d’utiliser la solution de votre choix.
+3. Seul l’administrateur pourra se connecter à l’interface d’administration avec les crud.
+4. Les clients devront être authentifiés afin de pouvoir faire les appels API.
+5. Les clients ne pourront éditer par API que les champs qu’ils ont le droit de voir à la
+récupération
+
+<hr>
+
 # Installation du projet
 
 1. Extraire le dossier
